@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Student registration · GREEN SCHOOLS{% endblock %}
+{% block content %}
+<section class="form-page"><div class="form-intro"><span class="eyebrow">Come grow with us</span><h1>Student registration</h1><p>Create a student profile to access your personal school dashboard.</p></div><form class="form-card stack-form" method="post">
+  <div class="form-grid"><label>Student name<input name="name" required maxlength="120" autocomplete="name"></label><label>Class / grade<input name="class_name" required maxlength="40" placeholder="e.g. Grade 8"></label><label>Roll number<input name="roll_number" type="number" min="1" required></label><label>Email <span class="optional">(optional)</span><input name="email" type="email" maxlength="254" autocomplete="email"></label><label>Choose username<input name="username" required maxlength="40" autocomplete="username"></label><label>Create password<input name="password" type="password" minlength="8" required autocomplete="new-password"><small>Use at least 8 characters.</small></label></div>
+  <button class="button" type="submit">Create student account <span>→</span></button><p class="form-foot">Already registered? <a href="{{ url_for('login') }}">Sign in</a></p>
+</form></section>
+{% endblock %}

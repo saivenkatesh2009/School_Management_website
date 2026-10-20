@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Sign in · GREEN SCHOOLS{% endblock %}
+{% block content %}
+<section class="auth-layout"><div class="auth-aside"><span class="eyebrow eyebrow-light">Welcome back</span><h1>Your school,<br>all in one place.</h1><p>Sign in to see what's happening in the GREEN SCHOOLS community.</p><div class="aside-note">“Small steps every day add up to big discoveries.”</div></div><div class="auth-panel"><span class="eyebrow">SCHOOL PORTAL</span><h2>Sign in to your account</h2><p class="muted">Use the account details provided by your school.</p><form method="post" class="stack-form"><label>Username<input name="username" autocomplete="username" required maxlength="40" autofocus></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="button button-wide" type="submit">Sign in <span>→</span></button></form><p class="form-foot">New student? <a href="{{ url_for('register') }}">Register here</a></p></div></section>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}GREEN SCHOOLS · Learn, lead, grow{% endblock %}
+{% block content %}
+<section class="public-hero" aria-labelledby="hero-title">
+  <img class="public-hero-image" src="{{ url_for('static', filename='images/green-schools-campus.jpg') }}" alt="Photograph of a modern school campus building in Houston, Texas; shown as an illustrative campus image." fetchpriority="high">
+  <div class="public-hero-shade"></div>
+  <div class="public-hero-content">
+    <span class="hero-kicker"><span></span> GREEN SCHOOLS · A COMMUNITY FOR EVERY LEARNER</span>
+    <h1 id="hero-title">A place to grow.<br><span>A future to lead.</span></h1>
+    <p>Curiosity opens doors. At GREEN SCHOOLS, we help every student discover their strengths and find their way forward.</p>
+    <div class="hero-actions">
+      <a class="button hero-button" href="{{ url_for('home') }}#about">Discover GREEN SCHOOLS <span aria-hidden="true">→</span></a>
+      <a class="button hero-button-secondary" href="{{ url_for('register') }}">Student admissions</a>
+    </div>
+    <div class="hero-location"><span class="location-rule"></span><span>Rooted in community. Ready for what’s next.</span></div>
+  </div>
+  <a class="hero-photo-credit" href="https://commons.wikimedia.org/wiki/File:Memorial_High_School_New_Campus_Houston_Texas.jpg" target="_blank" rel="noopener noreferrer">Illustrative campus photo · Memorial High School, Houston · Go SMU! · CC BY-SA 4.0</a>
+  <a class="hero-scroll" href="{{ url_for('home') }}#about" aria-label="Scroll to learn about GREEN SCHOOLS"><span>↓</span></a>
+</section>
+
+<section class="welcome-strip" aria-label="School highlights">
+  <div class="welcome-strip-intro"><span class="gold-rule"></span><span>THE GREEN SCHOOLS DIFFERENCE</span></div>
+  <div class="welcome-stat"><b>{{ counts.students }}</b><span>students in our community</span></div>
+  <div class="welcome-stat"><b>{{ counts.teachers }}</b><span>educators inspiring growth</span></div>
+  <div class="welcome-stat"><b>One</b><span>community, many possibilities</span></div>
+</section>
+
+<section class="editorial-section about-section" id="about">
+  <div class="section-index">01 <span>— ABOUT GREEN SCHOOLS</span></div>
+  <div class="about-grid">
+    <div class="about-heading"><span class="eyebrow">Welcome to GREEN SCHOOLS</span><h2>Big possibilities<br>begin with <em>belonging.</em></h2></div>
+    <div class="about-copy"><p class="lead-copy">A great school is more than a place to learn. It’s a community where every student is encouraged to ask questions, build confidence, and imagine what comes next.</p><p>We bring learning, student life, and school communication together—so families and educators can stay connected to each learner’s journey.</p><a class="underlined-link" href="{{ url_for('login') }}">Explore the school portal <span aria-hidden="true">↗</span></a></div>
+  </div>
+  <div class="principle-grid">
+    <article class="principle-card"><span class="principle-number">01</span><span class="principle-icon" aria-hidden="true">✳</span><h3>Curiosity first</h3><p>Good questions lead to deeper understanding and a lifelong love of learning.</p></article>
+    <article class="principle-card"><span class="principle-number">02</span><span class="principle-icon" aria-hidden="true">⌁</span><h3>Progress together</h3><p>Students, families, and educators are stronger when they move forward as a team.</p></article>
+    <article class="principle-card"><span class="principle-number">03</span><span class="principle-icon" aria-hidden="true">↗</span><h3>Every path matters</h3><p>We celebrate effort, individual strengths, and the milestones along the way.</p></article>
+  </div>
+</section>
+
+<section class="academics-section" id="academics">
+  <div class="academics-inner">
+    <div class="section-index section-index-light">02 <span>— ACADEMIC EXCELLENCE</span></div>
+    <div class="academics-heading"><div><span class="eyebrow eyebrow-gold">Learning with purpose</span><h2>Knowledge for today.<br><em>Confidence for tomorrow.</em></h2></div><p>Stay connected to the everyday work of learning with a school portal designed to keep students, teachers, and families in sync.</p></div>
+    <div class="academic-feature-grid">
+      <article class="academic-feature"><span class="academic-feature-icon" aria-hidden="true">▤</span><div><span class="academic-caption">01 / CLASSROOM</span><h3>A clear learning rhythm</h3><p>Find class timetables and homework together in one easy-to-follow view.</p></div><a href="{{ url_for('login') }}" aria-label="Sign in to view academics">↗</a></article>
+      <article class="academic-feature"><span class="academic-feature-icon" aria-hidden="true">◷</span><div><span class="academic-caption">02 / PROGRESS</span><h3>Every step, recognized</h3><p>Attendance and assessment results help make student progress visible.</p></div><a href="{{ url_for('login') }}" aria-label="Sign in to view student progress">↗</a></article>
+      <article class="academic-feature"><span class="academic-feature-icon" aria-hidden="true">✉</span><div><span class="academic-caption">03 / COMMUNITY</span><h3>School life, in the loop</h3><p>Keep an eye on announcements, upcoming events, and school dates.</p></div><a href="{{ url_for('login') }}" aria-label="Sign in to view school announcements">↗</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="editorial-section environment-section" id="facilities">
+  <div class="section-index">03 <span>— THE LEARNING ENVIRONMENT</span></div>
+  <div class="section-title-row"><div><span class="eyebrow">Space to explore</span><h2>Room for every kind<br>of <em>discovery.</em></h2></div><p>A thoughtful learning environment makes space for focus, exploration, and the ideas students create together.</p></div>
+  <div class="environment-grid">
+    <article class="environment-card environment-card-main"><span class="environment-mark">01 / FOCUS</span><div class="environment-content"><span class="environment-symbol" aria-hidden="true">▧</span><h3>Space to concentrate</h3><p>Time and room to build understanding, one question at a time.</p></div></article>
+    <article class="environment-card environment-card-mid"><span class="environment-mark">02 / EXPLORE</span><div class="environment-content"><span class="environment-symbol" aria-hidden="true">✳</span><h3>Space to experiment</h3><p>Hands-on thinking turns new ideas into lasting learning.</p></div></article>
+    <article class="environment-card environment-card-end"><span class="environment-mark">03 / CONNECT</span><div class="environment-content"><span class="environment-symbol" aria-hidden="true">⌁</span><h3>Space to belong</h3><p>Sharing ideas, listening well, and learning alongside one another.</p></div></article>
+  </div>
+</section>
+
+<section class="student-section" id="students">
+  <div class="student-photo-panel" role="img" aria-label="Lake Louise and the Canadian Rocky Mountains">
+    <span class="photo-panel-caption">A wider view. A world of possibility.</span>
+  </div>
+  <div class="student-copy-panel"><div class="section-index">04 <span>— STUDENT ACHIEVEMENTS</span></div><span class="eyebrow">Every milestone counts</span><h2>Celebrate how<br>far you’ve <em>come.</em></h2><p>From a first confident answer to a hard-earned result, every student has achievements worth celebrating. The school portal helps learners and educators keep progress in view.</p><div class="student-highlight"><span aria-hidden="true">✦</span><span><b>{{ counts.students }} students</b><small>and growing together</small></span></div><a class="underlined-link" href="{{ url_for('login') }}">View your learning dashboard <span aria-hidden="true">↗</span></a></div>
+</section>
+
+<section class="editorial-section teachers-section" id="teachers">
+  <div class="section-index">05 <span>— OUR EDUCATORS</span></div>
+  <div class="section-title-row"><div><span class="eyebrow">The people who inspire us</span><h2>Meet the <em>teachers.</em></h2></div><p>Dedicated educators help make school a place where questions are welcome and progress is encouraged.</p></div>
+  <div class="teacher-grid">
+    {% for teacher in teachers %}
+      <article class="teacher-card"><span class="teacher-avatar" aria-hidden="true">{{ teacher.display_name[:1] }}</span><span class="teacher-label">GREEN SCHOOLS EDUCATOR</span><h3>{{ teacher.display_name }}</h3><p>Teacher · GREEN SCHOOLS</p></article>
+    {% else %}
+      <div class="empty-feature"><span class="empty-feature-icon" aria-hidden="true">✳</span><div><h3>Our teaching team</h3><p>Teacher profiles will appear here when they are added to the school portal.</p></div></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="news-section" id="events">
+  <div class="news-inner">
+    <div class="section-index">06 <span>— NEWS & SCHOOL LIFE</span></div>
+    <div class="section-title-row"><div><span class="eyebrow">The latest from GREEN SCHOOLS</span><h2>Good things are <em>happening.</em></h2></div><a class="underlined-link" href="{{ url_for('login') }}">More in the school portal <span aria-hidden="true">↗</span></a></div>
+    <div class="news-columns">
+      <div class="news-list"><h3 class="news-list-title"><span class="news-title-icon" aria-hidden="true">✉</span> Latest announcements</h3>
+        {% for item in announcements %}
+          <article class="news-item"><span class="news-date">{{ item.created_at }}</span><div><h4>{{ item.title }}</h4><p>{{ item.message }}</p><small>Shared by {{ item.author }}</small></div></article>
+        {% else %}
+          <div class="empty-feature empty-news"><span class="empty-feature-icon" aria-hidden="true">✉</span><div><h3>No announcements yet</h3><p>New school updates will appear here when they’re published.</p></div></div>
+        {% endfor %}
+      </div>
+      <div class="events-list"><h3 class="news-list-title"><span class="news-title-icon" aria-hidden="true">◷</span> Upcoming dates</h3>
+        {% for event in events %}
+          <article class="event-item"><div class="event-date"><b>{{ event.event_date[8:10] }}</b><span>{{ event.event_date[:7] }}</span></div><div><span class="event-category">{{ event.category }}</span><h4>{{ event.title }}</h4><p>{{ event.details }}</p></div></article>
+        {% else %}
+          <div class="empty-feature empty-news"><span class="empty-feature-icon" aria-hidden="true">◷</span><div><h3>No upcoming dates</h3><p>School events and holidays will be shared here.</p></div></div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="admissions-section" id="admissions">
+  <div class="admissions-orbit" aria-hidden="true"></div>
+  <div class="admissions-content"><span class="eyebrow eyebrow-gold">Your next chapter starts here</span><h2>Bring your curiosity.<br>We’ll grow from there.</h2><p>Start a student registration or sign in to the GREEN SCHOOLS portal to explore school life and learning.</p><div class="admissions-actions"><a class="button admission-primary" href="{{ url_for('register') }}">Begin student registration <span aria-hidden="true">→</span></a><a class="admission-link" href="{{ url_for('login') }}">Already part of GREEN SCHOOLS? Sign in</a></div></div>
+  <div class="admissions-contact" id="contact"><span class="contact-emblem">G</span><span class="contact-label">HERE TO HELP</span><h3>Questions about joining?</h3><p>For school-specific visiting hours and contact details, please reach out to the GREEN SCHOOLS office through your usual school channels.</p><a href="{{ url_for('register') }}">Admissions information <span aria-hidden="true">↗</span></a></div>
+</section>
+{% endblock %}

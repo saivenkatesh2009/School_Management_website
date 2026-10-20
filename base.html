@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10243a">
+  <meta name="description" content="GREEN SCHOOLS — a welcoming community for learning, discovery, and growth.">
+  <title>{% block title %}GREEN SCHOOLS{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="{% if session.get('user') %}portal-body{% else %}public-body{% endif %}">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {% if session.get('user') %}
+    <div class="portal-shell">
+      <aside class="portal-sidebar" id="portal-sidebar" aria-label="Portal navigation">
+        <a class="brand portal-brand" href="{{ url_for('dashboard') }}"><span class="brand-mark">G</span><span>GREEN SCHOOLS<span class="brand-sub">LEARNING PORTAL</span></span></a>
+        <div class="sidebar-caption">WORKSPACE</div>
+        <nav class="sidebar-nav">
+          <a class="{% if request.endpoint in ['dashboard', 'admin_dashboard', 'teacher_dashboard', 'student_dashboard'] %}is-active{% endif %}" href="{{ url_for('dashboard') }}"><span class="sidebar-icon" aria-hidden="true">⌂</span>Overview</a>
+          {% if session.user.role in ['admin', 'teacher'] %}
+            <a class="{% if request.endpoint == 'students' %}is-active{% endif %}" href="{{ url_for('students') }}"><span class="sidebar-icon" aria-hidden="true">♙</span>Students</a>
+            <a class="{% if request.endpoint == 'attendance' %}is-active{% endif %}" href="{{ url_for('attendance') }}"><span class="sidebar-icon" aria-hidden="true">✓</span>Attendance</a>
+          {% endif %}
+          <a class="{% if request.endpoint == 'academics' %}is-active{% endif %}" href="{{ url_for('academics') }}"><span class="sidebar-icon" aria-hidden="true">▤</span>Academics</a>
+          <a class="{% if request.endpoint == 'results' %}is-active{% endif %}" href="{{ url_for('results') }}"><span class="sidebar-icon" aria-hidden="true">↗</span>Results</a>
+          <a class="{% if request.endpoint == 'community' %}is-active{% endif %}" href="{{ url_for('community') }}"><span class="sidebar-icon" aria-hidden="true">◷</span>News & events</a>
+        </nav>
+        <div class="sidebar-bottom">
+          <a href="{{ url_for('home') }}#contact"><span class="sidebar-icon" aria-hidden="true">?</span>School information</a>
+          <form method="post" action="{{ url_for('logout') }}"><button type="submit"><span class="sidebar-icon" aria-hidden="true">↪</span>Sign out</button></form>
+        </div>
+        <div class="sidebar-school-note"><span class="school-note-mark">G</span><span><b>GREEN SCHOOLS</b><small>Learning together</small></span></div>
+      </aside>
+      <div class="portal-workspace">
+        <header class="portal-topbar">
+          <button class="nav-toggle portal-nav-toggle" type="button" aria-label="Open portal menu" aria-expanded="false" aria-controls="portal-sidebar">☰</button>
+          <div class="portal-breadcrumb"><span>School portal</span><span aria-hidden="true">/</span><b>{{ session.user.role|title }} workspace</b></div>
+          <div class="portal-user"><span class="portal-user-avatar">{{ session.user.name[:1] }}</span><span><b>{{ session.user.name }}</b><small>{{ session.user.role|title }}</small></span></div>
+        </header>
+  {% else %}
+    <header class="site-header">
+      <a class="brand" href="{{ url_for('home') }}" aria-label="GREEN SCHOOLS home"><span class="brand-mark">G</span><span>GREEN SCHOOLS<span class="brand-sub">LEARN · LEAD · GROW</span></span></a>
+      <button class="nav-toggle public-nav-toggle" type="button" aria-label="Open main navigation" aria-expanded="false" aria-controls="public-navigation">☰</button>
+      <nav class="main-nav public-nav" id="public-navigation" aria-label="Main navigation">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('home') }}#about">About</a>
+        <a href="{{ url_for('home') }}#academics">Academics</a>
+        <a href="{{ url_for('home') }}#students">Students</a>
+        <a href="{{ url_for('home') }}#teachers">Teachers</a>
+        <a href="{{ url_for('home') }}#admissions">Admissions</a>
+        <a href="{{ url_for('home') }}#events">Events</a>
+        <a href="{{ url_for('home') }}#contact">Contact</a>
+        <a class="button button-small header-portal-link" href="{{ url_for('login') }}">Portal sign in</a>
+      </nav>
+    </header>
+  {% endif %}
+  <main id="main-content" class="{% if session.get('user') %}portal-main{% endif %}">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}<div class="flash-stack" role="status" aria-live="polite">{% for category, message in messages %}<div class="flash flash-{{ category }}">{{ message }}<button type="button" class="flash-close" aria-label="Dismiss message">×</button></div>{% endfor %}</div>{% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  {% if session.get('user') %}
+      <footer class="portal-footer"><span>GREEN SCHOOLS · School management portal</span><a href="{{ url_for('home') }}">View public website ↗</a></footer>
+      </div>
+    </div>
+    <button class="sidebar-backdrop" type="button" aria-label="Close portal menu" tabindex="-1"></button>
+  {% else %}
+    <footer class="site-footer">
+      <div class="footer-main">
+        <div class="footer-brand-block"><a class="brand footer-brand" href="{{ url_for('home') }}"><span class="brand-mark">G</span><span>GREEN SCHOOLS<span class="brand-sub">LEARN · LEAD · GROW</span></span></a><p>A welcoming place to learn, discover, and grow—together.</p></div>
+        <div class="footer-links"><b>Explore</b><a href="{{ url_for('home') }}#about">About our school</a><a href="{{ url_for('home') }}#academics">Academics</a><a href="{{ url_for('home') }}#teachers">Our teachers</a></div>
+        <div class="footer-links"><b>School life</b><a href="{{ url_for('home') }}#admissions">Admissions</a><a href="{{ url_for('home') }}#events">News & events</a><a href="{{ url_for('login') }}">Student portal</a></div>
+        <div class="footer-social"><b>Connect</b><p>Official school profiles are not configured yet. Visit a social platform:</p><div class="social-links"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">◎</a><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶</a></div></div>
+      </div>
+      <div class="footer-bottom"><span>GREEN SCHOOLS · Learn, lead, grow.</span><span>Photos: <a href="https://commons.wikimedia.org/wiki/File:Memorial_High_School_New_Campus_Houston_Texas.jpg" target="_blank" rel="noopener noreferrer">Memorial High School, Houston · Go SMU! · CC BY-SA 4.0 (illustrative)</a> · <a href="https://commons.wikimedia.org/wiki/File:1_lake_louise_pano_2019.jpg" target="_blank" rel="noopener noreferrer">Lake Louise · Chensiyuan · CC BY-SA 4.0</a></span></div>
+    </footer>
+  {% endif %}
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}{{ code }} · GREEN SCHOOLS{% endblock %}
+{% block content %}<section class="empty-state"><span class="eyebrow">OOPS, SOMETHING'S MISSING</span><h1>{{ code }}</h1><p>{{ message }}</p><a class="button" href="{{ url_for('home') }}">Back to home</a></section>{% endblock %}
